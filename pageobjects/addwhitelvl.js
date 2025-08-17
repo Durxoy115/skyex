@@ -64,7 +64,7 @@ class WhiteLvl extends Page {
     await Prefix.waitForDisplayed({ timeout: 5000 });
 
     // Type into the input
-    await Prefix.setValue("cc");
+    await Prefix.setValue("zx");
 
 
     const signupUrl = await $('//input[@name="sign_up_url"]');
@@ -79,6 +79,72 @@ class WhiteLvl extends Page {
     // Click "Admin Setting"
     await clickOnCreateBtn.click();
     await browser.pause(5000); // wait for the page to load
+
+    await $('(//button[.//img[@alt="add_user"]])[1]').click();
+    // Wait for the input to be visible
+    const addEmail = await $('//input[@name="email"]');
+    await addEmail.waitForDisplayed({ timeout: 5000 });
+    // Type into the input
+    await addEmail.setValue('durjoy0@gmail.com');
+
+    const addUsername = await $('//input[@name="username"]');
+    await addUsername.waitForDisplayed({ timeout: 5000 });
+    // Type into the input
+    await addUsername.setValue('durjoy');
+
+    const addPassword = await $('//input[@name="password"]');
+    await addPassword.waitForDisplayed({ timeout: 5000 });
+    // Type into the input
+    await addPassword.setValue('Durjoy@123');
+
+    const addConfirmPassword = await $('//input[@name="confirm_password"]');
+    await addConfirmPassword.waitForDisplayed({ timeout: 5000 });
+    // Type into the input
+    await addConfirmPassword.setValue('Durjoy@123');
+
+    const addUserBtn = await $('//*[text()="Create"]');
+    await addUserBtn.waitForDisplayed({ timeout: 10000 });
+    // Click "Admin Setting"
+    await addUserBtn.click();
+
+    // Wait for the success message to appear
+    const successMessage = await $('//*[text()="User created successfully."]');
+    await successMessage.waitForDisplayed({ timeout: 10000 });
+    // Verify the success message
+    const messageText = await successMessage.getText();
+    if (messageText === "User created successfully.") {
+      console.log("User created successfully.");
+    } else {
+      console.error("Failed to create user.");
+    }
+
+    await $('(//*[text()="White Level"])[1]').click();
+    await $('//*[text()="Add Super Admin"]')
+
+    const addsprEmail = await $('//input[@name="email"]');
+    await addsprEmail.waitForDisplayed({ timeout: 5000 });
+    // Type into the input
+    await addsprEmail.setValue('durjoy0@gmail.com');
+
+    const addsprUsername = await $('//input[@name="username"]');
+    await addsprUsername.waitForDisplayed({ timeout: 5000 });
+    // Type into the input
+    await addsprUsername.setValue('durjoy');
+
+    const addSprPassword = await $('//input[@name="password"]');
+    await addSprPassword.waitForDisplayed({ timeout: 5000 });
+    // Type into the input
+    await addSprPassword.setValue('Durjoy@123');
+
+    const addsprConfirmPassword = await $('//input[@name="confirm_password"]');
+    await addsprConfirmPassword.waitForDisplayed({ timeout: 5000 });
+    // Type into the input
+    await addsprConfirmPassword.setValue('Durjoy@123');
+
+    const addsprUserBtn = await $('//*[text()="Create"]');
+    await addsprUserBtn.waitForDisplayed({ timeout: 10000 });
+    // Click "Admin Setting"
+    await addsprUserBtn.click();
   }
 }
 
